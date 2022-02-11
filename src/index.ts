@@ -227,6 +227,9 @@ async function importAccount(
   await acceptTerms.click();
 
   const restoreButton = await metamaskPage.waitForSelector('.first-time-flow button');
+  let error = (await metamaskPage.$('error')) || "";
+  console.log(error);
+
   await restoreButton.click();
 
   const doneButton = await metamaskPage.waitForSelector('.end-of-flow button');
@@ -234,4 +237,5 @@ async function importAccount(
 
   const popupButton = await metamaskPage.waitForSelector('.popover-header__button');
   await popupButton.click();
+  
 }
